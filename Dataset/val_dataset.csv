@@ -1,0 +1,1730 @@
+Code,JavaDoc,Package
+void attacheSensor(Sensor sensor);,"/**
+     * Attache the {@link Sensor}.
+     *
+     * @param sensor
+     *            the {@link Sensor}
+     */",jestures.core.tracking
+"public void fillGestureCombo() {
+        this.gestureComboBox.getItems().addAll(DefaultGesture.getAllDefaultGestures());
+    }","/**
+     * Fill gesture with default combo.
+     *
+     */",recorder.view
+"private RecordingFactory() {
+    }","/*******************************************************************************
+ * Copyright (c) 2018 Giulianini Luca
+ *
+ * Licensed under the Apache License, Version 2.0 (the ""License"");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an ""AS IS"" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/",jestures.core.view.utils
+"@Nonnull
+    @CheckReturnValue
+    GuildManager setDescription(@Nullable String description);","/**
+     * Sets the Description {@link net.dv8tion.jda.api.entities.Icon Icon} of this {@link net.dv8tion.jda.api.entities.Guild Guild}.
+     *
+     * @param  description
+     *         The new description for this {@link net.dv8tion.jda.api.entities.Guild Guild}
+     *         or {@code null} to reset
+     *
+     * @throws java.lang.IllegalStateException
+     *         If the guild's {@link net.dv8tion.jda.api.entities.Guild#getFeatures() features} do not include {@code VERIFIED}
+     *
+     * @return GuildManager for chaining convenience
+     */",net.dv8tion.jda.api.managers
+"public StageInstance(final GatewayDiscordClient gateway, final StageInstanceData data) {
+        this.gateway = gateway;
+        this.data = data;
+        this.rest = RestStageInstance.create(gateway.rest(), Snowflake.of(data.channelId()));
+    }","/**
+     * Constructs a {@code StageInstance} with an associated {@link GatewayDiscordClient} and Discord data.
+     *
+     * @param gateway The {@link GatewayDiscordClient} associated to this object, must be non-null.
+     * @param data The raw stage instance data as represented by Discord, must be non-null.
+     */",discord4j.core.object.entity
+"public List<ThreadChannel> getThreads() {
+        return threads;
+    }","/**
+     * Gets the thread channels in this portion of the threads list.
+     *
+     * @return The thread channels in this portion of the threads list.
+     */",discord4j.core.object
+"public LegacyMessageEditSpec addEmbed(Consumer<? super LegacyEmbedCreateSpec> spec) {
+        final LegacyEmbedCreateSpec mutatedSpec = new LegacyEmbedCreateSpec();
+        spec.accept(mutatedSpec);
+
+        // if the Possible or the Optional is empty
+        if (this.embeds.isAbsent() || !this.embeds.get().isPresent()) {
+            this.embeds = Possible.of(Optional.of(new ArrayList<>(1)));
+        }
+
+        this.embeds.get().get().add(mutatedSpec.asRequest());
+        return this;
+    }","/**
+     * Adds an embed to the edit request.
+     * <p>
+     * <b>Warning:</b> This method does <i>not</i> add an embed to the embeds already existing on the message. That is,
+     * if a message has embeds A and B, editing it with {@code addEmbed(C)} will result in the message having <i>only</i>
+     * embed C. To actually add embed C to the message, all embeds must be sent
+     * (i.e., do {@code addEmbed(A).addEmbed(B).addEmbed(C)}.
+     *
+     * @param spec An {@link LegacyEmbedCreateSpec} consumer used to attach rich content when creating a message.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"@Nonnull
+    static ForumTagSnowflake fromId(long id)
+    {
+        return new ForumTagSnowflakeImpl(id);
+    }","/**
+     * Wraps the provided id into a ForumTagSnowflake instance.
+     *
+     * @param  id
+     *         The id of an existing forum tag
+     *
+     * @return ForumTagSnowflake instance for the provided id
+     */",net.dv8tion.jda.api.entities.channel.forums
+"public static GetVoiceStatesAction getVoiceStates() {
+        return new GetVoiceStatesAction();
+    }","/**
+     * Creates an action to retrieve data for all voice states present in a store.
+     *
+     * @return a new {@link GetVoiceStatesAction}
+     */",discord4j.common.store.action.read
+"@Nonnull
+    @CheckReturnValue
+    Builder<? extends SelectMenu, ? extends Builder<?, ?>> createCopy();","/**
+     * Creates a new preconfigured {@link SelectMenu.Builder} with the same settings used for this select menu.
+     * <br>This can be useful to create an updated version of this menu without needing to rebuild it from scratch.
+     *
+     * @return The {@link SelectMenu.Builder} used to create the select menu
+     */",net.dv8tion.jda.api.interactions.components.selections
+"@Nonnull
+    public SessionState getState()
+    {
+        return state;
+    }","/**
+     * The new session state.
+     *
+     * @return {@link SessionState}
+     */",net.dv8tion.jda.api.events.session
+"@Nonnull
+    @CheckReturnValue
+    TextChannelManager setType(@Nonnull ChannelType type);","/**
+     * Converts the selected channel to a different {@link ChannelType}.
+     *
+     * <br><br>
+     * This can only be done in the follow situations:
+     * <table>
+     *     <caption style=""display: none"">Javadoc is stupid, this is not a required tag</caption>
+     *     <thead>
+     *         <tr>
+     *             <th>Current Channel Type</th>
+     *             <th></th>
+     *             <th>New Channel Type</th>
+     *         </tr>
+     *     </thead>
+     *     <tbody>
+     *         <tr>
+     *             <td>{@link ChannelType#NEWS}</td>
+     *             <td> -&gt; </td>
+     *             <td>{@link ChannelType#TEXT}</td>
+     *         </tr>
+     *         <tr>
+     *             <td>{@link ChannelType#TEXT}</td>
+     *             <td> -&gt; </td>
+     *             <td>{@link ChannelType#NEWS}</td>
+     *         </tr>
+     *     </tbody>
+     * </table>
+     *
+     * @param  type
+     *         The new not-null {@link ChannelType} of the channel
+     *
+     * @throws IllegalArgumentException
+     *         If {@code channelType} is not {@link ChannelType#TEXT} or {@link ChannelType#NEWS}
+     * @throws UnsupportedOperationException
+     *         If this ChannelAction is not for a {@link TextChannel} or {@link net.dv8tion.jda.api.entities.channel.concrete.NewsChannel}
+     * @throws IllegalStateException
+     *         If {@code channelType} is {@link ChannelType#NEWS} and the guild doesn't have the {@code NEWS} feature in {@link Guild#getFeatures()}.
+     *
+     * @return ChannelManager for chaining convenience
+     *
+     * @see    Guild#getFeatures()
+     */",net.dv8tion.jda.api.managers.channel.concrete
+"@Nonnull
+    @CheckReturnValue
+    ActionComponent withDisabled(boolean disabled);","/**
+     * Returns a copy of this component with {@link #isDisabled()} set to the provided value.
+     *
+     * @param  disabled
+     *         True, if this component should be disabled
+     *
+     * @throws UnsupportedOperationException
+     *         If this component type cannot be disabled
+     *
+     * @return New enabled/disabled component instance
+     */",net.dv8tion.jda.api.interactions.components
+"@Nullable
+    T getElementById(@Nonnull ChannelType type, long id);","/**
+     * Retrieves the entity represented by the provided ID.
+     *
+     * @param  type
+     *         The expected {@link ChannelType}
+     * @param  id
+     *         The ID of the entity
+     *
+     * @return Possibly-null entity for the specified ID, null if the expected type is different from the actual type
+     */",net.dv8tion.jda.api.utils.cache
+"public static CountTotalAction countVoiceStates() {
+        return new CountTotalAction(CountableEntity.VOICE_STATES);
+    }","/**
+     * Creates an action to count the number of voice states present in a store.
+     *
+     * @return a new {@link CountTotalAction}
+     */",discord4j.common.store.action.read
+"void setFaction(Faction faction, boolean alt);","/**
+     * Sets the faction of the FPlayer
+     *
+     * @param faction faction to set.
+     */",com.massivecraft.factions
+"public User getResolvedUser() {
+        return getInteraction().getCommandInteraction()
+                .flatMap(ApplicationCommandInteraction::getResolved)
+                .flatMap(it -> it.getUser(getTargetId()))
+                .orElseThrow(IllegalStateException::new);
+    }","/**
+     * Gets the resolved targeted User.
+     *
+     * @return The resolved targeted User.
+     */",discord4j.core.event.domain.interaction
+"@SuppressWarnings(""unchecked"")
+	public static void register(@SuppressWarnings(""rawtypes"") Map tagletMap) {
+		WRAPITaglet tag = new WRAPITaglet();
+		Taglet t = (Taglet) tagletMap.get(tag.getName());
+		if (t != null) {
+			tagletMap.remove(tag.getName());
+		}
+		tagletMap.put(tag.getName(), tag);
+	}","/**
+	 * Register this Taglet.
+	 * 
+	 * @param tagletMap
+	 *            the map to register this tag to.
+	 */",net.winroad.wrdoclet.taglets
+"@Nonnull
+    @CheckReturnValue
+    ScheduledEventManager setStatus(@Nonnull ScheduledEvent.Status status);","/**
+     * Sets the status of the event. This method may be used to start, end or cancel an event but can only be used to
+     * complete one of the following transitions:
+     * <ol>
+     *     <li>{@link ScheduledEvent.Status#SCHEDULED Status.SCHEDULED} to {@link ScheduledEvent.Status#ACTIVE Status.ACTIVE}</li>
+     *     <li>{@link ScheduledEvent.Status#SCHEDULED Status.SCHEDULED} to {@link ScheduledEvent.Status#CANCELED Status.CANCELED}</li>
+     *     <li>{@link ScheduledEvent.Status#ACTIVE Status.ACTIVE} to {@link ScheduledEvent.Status#COMPLETED Status.COMPLETED}</li>
+     * </ol>
+     *
+     * @param  status
+     *         The new status
+     *
+     * @throws java.lang.IllegalStateException
+     *         If the transition between statuses does not follow one of the three documented above.
+     * @throws IllegalArgumentException
+     *         If the provided status is {@code null}
+     *
+     * @return ScheduledEventManager for chaining convenience
+     *
+     * @see    #getScheduledEvent()
+     * @see    ScheduledEvent#getStatus()
+     */",net.dv8tion.jda.api.managers
+"public boolean isNews()
+    {
+        return isNews;
+    }","/**
+     * Whether or not this channel is considered an Announcement-/News-Channel.
+     * <br>These channels can be used to crosspost messages to other guilds by using a follower type webhook.
+     *
+     * @return True, if this is considered a news channel
+     */",net.dv8tion.jda.api.entities.templates
+"public Instant getCreation() {
+        return createdAt;
+    }","/**
+     * Gets when this invite was created.
+     *
+     * @return When this invite was created.
+     */",discord4j.core.event.domain
+"public LegacyInviteCreateSpec setTargetApplicationId(Snowflake targetApplicationId) {
+        requestBuilder.targetApplicationId(targetApplicationId.asString());
+        return this;
+    }","/**
+     * Sets the id of the embedded application to open for this invite, required if `target_type` is 2, the
+     * application must have the `EMBEDDED` flag.
+     *
+     * @param targetApplicationId The id of the embedded application to open for this invite.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"public boolean wasVerified()
+    {
+        return getOldValue();
+    }","/**
+     * Whether the account was verified
+     *
+     * @return True, if this account was previously verified
+     */",net.dv8tion.jda.api.events.self
+"static EventDispatcher replayingWithTimeout(Duration maxAge) {
+        return builder()
+                .eventSink(spec -> spec.replay().limit(maxAge))
+                .build();
+    }","/**
+     * Create an {@link EventDispatcher} that is time-bounded and retains all elements whose age is at most {@code
+     * maxAge}, replaying them to late subscribers. Be aware that using this type of dispatcher with operators such
+     * as {@link Flux#retry()} or {@link Flux#repeat()} that re-subscribe to the dispatcher will observe the same
+     * elements as the backlog contains.
+     *
+     * @param maxAge the maximum age of the contained items
+     * @return an {@link EventDispatcher} that will replay elements up to {@code maxAge} duration to late subscribers
+     */",discord4j.core.event
+"@Nullable
+    public static DataObject optObject(@Nonnull DataArray root, @Nonnull String path)
+    {
+        if (!path.endsWith(""?""))
+            path += ""?"";
+        return get(root, path, DataObject::getObject, DataArray::getObject);
+    }","/**
+     * Parses the given {@code path} and finds the appropriate value within this {@link DataArray}.
+     *
+     * @param  root
+     *         The root data array, which is the top level accessor.
+     *         <br>The very first element in the path corresponds to a field of that name within this root object.
+     * @param  path
+     *         The path of the value, in accordance with the described grammar by {@link DataPath}.
+     *         This must start with an index element, such as {@code ""[0]""}.
+     *
+     * @throws ParsingException
+     *         If the path is invalid or resolving fails due to missing elements
+     * @throws IndexOutOfBoundsException
+     *         If any of the elements in the path refer to an array index that is out of bounds
+     * @throws IllegalArgumentException
+     *         If null is provided or the path is empty
+     *
+     * @return The DataObject at the given path, or null if the path resolves to an optional value that is missing.
+     */",net.dv8tion.jda.api.utils.data
+"@Nonnull
+    @CheckReturnValue
+    ThreadChannelManager setAutoArchiveDuration(@Nonnull ThreadChannel.AutoArchiveDuration autoArchiveDuration);","/**
+     * Sets the inactive time before autoarchiving of this ThreadChannel.
+     *
+     * <p>This is limited to the choices offered in {@link ThreadChannel.AutoArchiveDuration}
+     *
+     * @param  autoArchiveDuration
+     *         The new duration before an inactive channel will be autoarchived.
+     *
+     * @return this ThreadChannelManager for chaining convenience.
+     *
+     * @see ThreadChannel#getAutoArchiveDuration()
+     */",net.dv8tion.jda.api.managers.channel.concrete
+"@Nonnull
+    public static SubcommandData fromSubcommand(@Nonnull Command.Subcommand subcommand)
+    {
+        Checks.notNull(subcommand, ""Subcommand"");
+        SubcommandData data = new SubcommandData(subcommand.getName(), subcommand.getDescription());
+        data.setNameLocalizations(subcommand.getNameLocalizations().toMap());
+        data.setDescriptionLocalizations(subcommand.getDescriptionLocalizations().toMap());
+        subcommand.getOptions()
+                .stream()
+                .map(OptionData::fromOption)
+                .forEach(data::addOptions);
+        return data;
+    }","/**
+     * Converts the provided {@link Command.Subcommand} into a SubCommandData instance.
+     *
+     * @param  subcommand
+     *         The subcommand to convert
+     *
+     * @throws IllegalArgumentException
+     *         If null is provided or the subcommand has illegal configuration
+     *
+     * @return An instance of SubCommandData
+     */",net.dv8tion.jda.api.interactions.commands.build
+"public AbstractRecognitionScreenView(final Recognition recognizer) {
+        super(recognizer);
+        this.recognizer = recognizer;
+    }","/**
+     * The constructor.
+     *
+     * @param recognizer
+     *            the {@link Recognition} recognizer
+     *
+     */",jestures.core.view.screens
+"public LegacyEmbedCreateSpec addField(String name, String value, boolean inline) {
+        this.fields.add(EmbedFieldData.builder()
+                .name(name)
+                .value(value)
+                .inline(inline)
+                .build());
+        return this;
+    }","/**
+     * Adds a field to the embed.
+     *
+     * @param name The name of the field.
+     * @param value The text inside of the field.
+     * @param inline Whether to inline the field or not.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+void stop();,"/**
+     * Stops the Kinect.
+     */",jestures.sensor.kinect
+"@Nonnull
+    @Unmodifiable
+    default List<NewsChannel> getNewsChannels()
+    {
+        return getGuild().getNewsChannelCache().applyStream(stream ->
+            stream.filter(channel -> equals(channel.getParentCategory()))
+                  .sorted()
+                  .collect(Helpers.toUnmodifiableList())
+        );
+    }","/**
+     * All {@link NewsChannel NewsChannels}
+     * listed for this Category
+     *
+     * @return Immutable list of all child NewsChannels
+     */",net.dv8tion.jda.api.entities.channel.concrete
+"private void checkId(Integer id) {
+        if (Objects.isNull(id) || id < 1) {
+            throw new InvalidValidationException(""Invalid ID!"");
+        }
+    }","/**
+     * This method is used to check id.
+     *
+     * @param id -> Incoming id cannot be less than one.
+     * @since 1.0
+     */",org.khasanof.citiesapi.service.user
+"@Nonnull
+    @CheckReturnValue
+    public CacheRestAction<User> retrieveUser()
+    {
+        return getJDA().retrieveUserById(getUserIdLong());
+    }","/**
+     * Retrieves the {@link User} that subscribed or unsubscribed to the {@link ScheduledEvent ScheduledEvent}.
+     * <br>If a user is known, this will return {@link #getUser()}.
+     *
+     * @return {@link RestAction} - Type: {@link User}
+     */",net.dv8tion.jda.api.events.guild.scheduledevent
+new UnknownPropertyHandler(true));,"/**
+     * A mapper of {@link ObjectMapper} to handle unknown properties without throwing errors.
+     */",discord4j.common
+"public long getThreadMemberIdLong()
+    {
+        return threadMemberId;
+    }","/**
+     * The id of the {@link ThreadMember}.
+     *
+     * @return Long containing the Id.
+     */",net.dv8tion.jda.api.events.thread.member
+"public Optional<Instant> getRequestedToSpeakAt() {
+        return data.requestToSpeakTimestamp()
+                .map(timestamp -> DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestamp, Instant::from));
+    }","/**
+     * Gets the time at which the user requested to speak, if present.
+     *
+     * @return The time at which the user requested to speak, if present.
+     */",discord4j.core.object
+"public Mono<Message> editReply(InteractionReplyEditSpec spec) {
+        Objects.requireNonNull(spec);
+        return Mono.defer(() -> {
+                    InteractionReplyEditSpec actualSpec = getClient().getRestClient().getRestResources()
+                            .getAllowedMentions()
+                            .filter(allowedMentions -> !spec.isAllowedMentionsPresent())
+                            .map(spec::withAllowedMentionsOrNull)
+                            .orElse(spec);
+                    return getInteractionResponse().editInitialResponse(actualSpec.asRequest());
+                })
+                .map(data -> new Message(getClient(), data));
+    }","/**
+     * Edits the initial reply sent when accepting this interaction with the given spec contents.
+     * <p>
+     * For component interactions, like buttons or select menus, this method modifies the message depending on the
+     * initial response method chosen: if {@link #deferReply()} or {@link #reply()} was used, the <strong>new</strong>
+     * message created with the reply; if {@link ComponentInteractionEvent#edit()} or
+     * {@link ComponentInteractionEvent#deferEdit()} was used, this method will modify the message the component is on.
+     * <p>
+     * By default, this method will append any file added through {@code withFiles}. To replace or remove individual
+     * attachments, use {@code withAttachment} along with {@link discord4j.core.object.entity.Attachment} objects from
+     * the original message you want to keep. It is not required to include the new files as {@code Attachment} objects.
+     * <p>
+     * See the docs for {@link #editReply()} for examples and adapt them to a standalone spec.
+     *
+     * @param spec an immutable object that specifies how to edit the initial reply
+     * @return a {@link Mono} where, upon successful completion, emits the updated message. If an error is received,
+     * it is emitted through the {@code Mono}.
+     */",discord4j.core.event.domain.interaction
+"public LegacyRoleEditSpec setColor(Color color) {
+        requestBuilder.color(color.getRGB());
+        return this;
+    }","/**
+     * Sets the new color of the {@link Role}.
+     *
+     * @param color The role color.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"@Override
+    public boolean equals(@Nullable final Object obj) {
+        return (obj instanceof Snowflake) && (((Snowflake) obj).id == id);
+    }","/**
+     * Indicates whether some other object is ""equal to"" this {@code Snowflake}.
+     * The other object is considered equal if:
+     * <ul>
+     * <li>It is also a {@code Snowflake} and;</li>
+     * <li>Both instances have equal {@link #asLong() IDs}.</li>
+     * </ul>
+     *
+     * @param obj An object to be tested for equality.
+     * @return {@code true} if the other object is ""equal to"" this one, false otherwise.
+     */",discord4j.common.util
+"@Nonnull
+    public EnumSet<Permission> getOldDeny()
+    {
+        return Permission.getPermissions(oldDeny);
+    }","/**
+     * The old denied permissions
+     *
+     * @return The old denied permissions
+     */",net.dv8tion.jda.api.events.guild.override
+"@Nonnull
+    @CheckReturnValue
+    default Button withId(@Nonnull String id)
+    {
+        Checks.notEmpty(id, ""ID"");
+        Checks.notLonger(id, ID_MAX_LENGTH, ""ID"");
+        return new ButtonImpl(id, getLabel(), getStyle(), null, isDisabled(), getEmoji());
+    }","/**
+     * Returns a copy of this button with the provided id.
+     *
+     * @param  id
+     *         The id to use
+     *
+     * @throws IllegalArgumentException
+     *         <ul>
+     *             <li>If the provided {@code id} is null or empty.</li>
+     *             <li>If the character limit for {@code id}, defined by {@link #ID_MAX_LENGTH} as {@value #ID_MAX_LENGTH},
+     *             is exceeded.</li>
+     *         </ul>
+     *
+     * @return New button with the changed id
+     */",net.dv8tion.jda.api.interactions.components.buttons
+"@Nonnull
+    static <E> CacheView<E> all(@Nonnull Collection<? extends CacheView<E>> cacheViews)
+    {
+        Checks.noneNull(cacheViews, ""Collection"");
+        return new UnifiedCacheViewImpl<>(cacheViews::stream);
+    }","/**
+     * Creates a combined {@link net.dv8tion.jda.api.utils.cache.CacheView CacheView}
+     * for all provided CacheView implementations. This allows to combine cache of multiple
+     * JDA sessions or Guilds.
+     *
+     * @param  cacheViews
+     *         Collection of {@link net.dv8tion.jda.api.utils.cache.CacheView CacheView} implementations
+     *
+     * @param  <E>
+     *         The target type of the projection
+     *
+     * @return Combined CacheView spanning over all provided implementation instances
+     */",net.dv8tion.jda.api.utils.cache
+"public Optional<ThreadMetadata> getThreadMetadata() {
+        return data.threadMetadata().toOptional();
+    }","/**
+     * Gets the associated thread metadata, if the provided channel is a thread.
+     *
+     * @return Associated {@link ThreadMetadata}, if present.
+     */",discord4j.core.object.command
+"@Nonnull
+    public Map<String, Object> getOptions()
+    {
+        return options;
+    }","/**
+     * Key-Value {@link java.util.Map Map} containing all Options made in this entry. The keys for the returned map are
+     * case-insensitive keys defined in the regarding AuditLogChange value.
+     * <br>To iterate only the changes you can use {@link java.util.Map#values() Map.values()}!
+     *
+     * <p>Options may include secondary targets or details that do not qualify as ""change"".
+     * <br>An example of that would be the {@code member} option
+     * for {@link net.dv8tion.jda.api.audit.ActionType#CHANNEL_OVERRIDE_UPDATE CHANNEL_OVERRIDE_UPDATE}
+     * containing the user_id of a {@link net.dv8tion.jda.api.entities.Member Member}.
+     *
+     * @return Key-Value Map of changes
+     */",net.dv8tion.jda.api.audit
+"public static long getUnsignedLong(@Nonnull DataObject root, @Nonnull String path, long fallback)
+    {
+        Long longValue = get(root, path, (obj, key) -> obj.getUnsignedLong(key, fallback), (arr, index) -> arr.getUnsignedLong(index, fallback));
+        return longValue == null ? fallback : longValue;
+    }","/**
+     * Parses the given {@code path} and finds the appropriate value within this {@link DataObject}.
+     * <br>If the resulting value is a string, this will parse the string using {@link Long#parseUnsignedLong(String)}.
+     *
+     * @param  root
+     *         The root data object, which is the top level accessor.
+     *         <br>The very first element in the path corresponds to a field of that name within this root object.
+     * @param  path
+     *         The path of the value, in accordance with the described grammar by {@link DataPath}.
+     *         This must start with a name element, such as {@code ""foo""}.
+     *
+     * @throws ParsingException
+     *         If the path is invalid or resolving fails due to missing elements
+     * @throws IndexOutOfBoundsException
+     *         If any of the elements in the path refer to an array index that is out of bounds
+     * @throws IllegalArgumentException
+     *         If null is provided or the path is empty
+     *
+     * @return The unsigned long value at the given path, returning the fallback if the path resolves to an optional value that is missing.
+     */",net.dv8tion.jda.api.utils.data
+"@Nonnull
+    @Override
+    ChannelAction<VoiceChannel> createCopy(@Nonnull Guild guild);","/**
+     * The maximum limit you can set with {@link VoiceChannelManager#setUserLimit(int)}. ({@value})
+     */",net.dv8tion.jda.api.entities.channel.concrete
+"@Override
+	public List<EmployeeProjectData> findByEmployeeId(final Integer employeeId) {
+		return this.rep.findByEmployeeId(employeeId);
+	}","/**
+	 * @param employeeId
+	 * @return list of EmployeeProjectData
+	 */",com.pfa.app.service.impl
+"public Instant getTimestamp() {
+        return Instant.ofEpochMilli(DISCORD_EPOCH + (id >>> 22));
+    }","/**
+     * Gets the timestamp of this {@code Snowflake}.
+     *
+     * @return The timestamp of this {@code Snowflake}.
+     */",discord4j.common.util
+boolean isValid(T object);,"/**
+   * Validate an object.
+   *
+   * @param object an object
+   * @return       <code>true</code> if valid;
+   *               <code>false</code> otherwise
+   */",io.github.augustoravazoli.termenu.util
+"@Nullable
+    public Long getPermissionsRaw()
+    {
+        return permissions;
+    }","/**
+     * Raw permission integer representing the default permissions of a command.
+     * <br>This returns null if it is of type {@link DefaultMemberPermissions#ENABLED ENABLED}
+     * <br>If the default member permissions are {@link DefaultMemberPermissions#DISABLED DISABLED}, this returns 0
+     *
+     * @return Raw permission integer representing the default member permissions of a command
+     */",net.dv8tion.jda.api.interactions.commands
+"public Optional<Instant> getCurrentPremiumSince() {
+        return Optional.ofNullable(currentPremiumSince)
+            .map(timestamp -> DateTimeFormatter.ISO_OFFSET_DATE_TIME.parse(timestamp, Instant::from));
+    }","/**
+     * Gets when the user started boosting the guild, if present.
+     *
+     * @return When the user started boosting the guild, if present.
+     */",discord4j.core.event.domain.guild
+"@Override
+    public void setMaxDtwThreashold(final int maxDtwThreashold) {
+        if (maxDtwThreashold >= 0) {
+            this.maxDTWThreashold = maxDtwThreashold;
+        } else {
+            throw new IllegalStateException(""Min threshold must be greater than 0"");
+        }
+    }","/**
+     * Set the threshold for gesture maximum acceptance.
+     * <p>
+     * Only gestures, that have a feature vector distance (by DTW) greater than minThreashold, are accepted.
+     *
+     *
+     * @param maxDtwThreashold
+     *            represents the maximum distance above which a feature vector is accepted
+     */",jestures.core.recognition.gesturedata
+"public static ActionMapper empty() {
+        return EMPTY;
+    }","/**
+     * Returns an {@link ActionMapper} containing no mappings.
+     *
+     * @return an empty {@link ActionMapper}
+     */",discord4j.common.store.api
+"public LegacyWebhookCreateSpec setName(String name) {
+        this.name = name;
+        return this;
+    }","/**
+     * Sets the name of the created {@link Webhook}.
+     *
+     * @param name The webhook name.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"Route.CompiledRoute route = Route.Messages.ADD_REACTION.compile(getId(), messageId, emoji.getAsReactionCode(), ""@me"");","/**
+     * Attempts to react to a message represented by the specified {@code messageId}
+     * in this MessageChannel.
+     *
+     * <p>The following {@link net.dv8tion.jda.api.requests.ErrorResponse ErrorResponses} are possible:
+     * <ul>
+     *     <li>{@link net.dv8tion.jda.api.requests.ErrorResponse#MISSING_ACCESS MISSING_ACCESS}
+     *     <br>The request was attempted after the account lost access to the {@link net.dv8tion.jda.api.entities.Guild Guild}
+     *         typically due to being kicked or removed, or after {@link net.dv8tion.jda.api.Permission#VIEW_CHANNEL Permission.VIEW_CHANNEL}
+     *         was revoked in the {@link GuildMessageChannel GuildMessageChannel}
+     *     <br>Also can happen if the account lost the {@link net.dv8tion.jda.api.Permission#MESSAGE_HISTORY Permission.MESSAGE_HISTORY}</li>
+     *
+     *
+     *     <li>{@link net.dv8tion.jda.api.requests.ErrorResponse#MISSING_PERMISSIONS MISSING_PERMISSIONS}
+     *     <br>The request was attempted after the account lost
+     *         {@link net.dv8tion.jda.api.Permission#MESSAGE_ADD_REACTION Permission.MESSAGE_ADD_REACTION} in the
+     *         {@link GuildMessageChannel GuildMessageChannel}.</li>
+     *
+     *     <li>{@link net.dv8tion.jda.api.requests.ErrorResponse#UNKNOWN_EMOJI UNKNOWN_EMOJI}
+     *     <br>The provided emoji was deleted, doesn't exist, or is not available to the currently logged-in account in this channel.</li>
+     *
+     *     <li>{@link net.dv8tion.jda.api.requests.ErrorResponse#UNKNOWN_MESSAGE UNKNOWN_MESSAGE}
+     *     <br>The provided {@code messageId} is unknown in this MessageChannel, either due to the id being invalid, or
+     *         the message it referred to has already been deleted.</li>
+     *
+     *     <li>{@link net.dv8tion.jda.api.requests.ErrorResponse#UNKNOWN_CHANNEL UNKNOWN_CHANNEL}
+     *     <br>The request was attempted after the channel was deleted.</li>
+     * </ul>
+     *
+     * @param  messageId
+     *         The messageId to attach the reaction to
+     * @param  emoji
+     *         The not-null {@link Emoji} to react with
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         <ul>
+     *             <li>If provided {@code messageId} is {@code null} or empty.</li>
+     *             <li>If provided {@code emoji} is {@code null}.</li>
+     *         </ul>
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         If the MessageChannel this message was sent in was a {@link GuildMessageChannel GuildMessageChannel}
+     *         and the logged in account does not have
+     *         <ul>
+     *             <li>{@link net.dv8tion.jda.api.Permission#MESSAGE_ADD_REACTION Permission.MESSAGE_ADD_REACTION}</li>
+     *             <li>{@link net.dv8tion.jda.api.Permission#MESSAGE_HISTORY Permission.MESSAGE_HISTORY}</li>
+     *         </ul>
+     *
+     * @return {@link net.dv8tion.jda.api.requests.RestAction}
+     */",net.dv8tion.jda.api.entities.channel.middleman
+"@Nonnull
+    default EntitlementPaginationAction guild(@Nonnull Guild guild)
+    {
+        Checks.notNull(guild, ""guild"");
+        return guild(guild.getIdLong());
+    }","/**
+     * Filters {@link Entitlement Entitlement}s by a {@link Guild Guild}
+     *
+     * @param guild
+     *        The {@link Guild Guild} to filter by
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         If the provided {@code guild} is {@code null}
+     *
+     * @return The current {@link EntitlementPaginationAction EntitlementPaginationAction} for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction.pagination
+FollowupInteractionHandler replyEphemeral(String content);,"/**
+     * Build an interaction handler that will produce a text reply only to the interaction member.
+     *
+     * @param content the content to be sent as reply
+     * @return a followup handler to continue processing this interaction asynchronously, until the interaction token
+     * bound to this interaction expires after 15 minutes.
+     */",discord4j.rest.interaction
+"public Mono<TemplateData> getData() {
+        return restClient.getTemplateService().getTemplate(code);
+    }","/**
+     * Retrieve this template's data upon subscription.
+     *
+     * @return a template object
+     */",discord4j.rest.entity
+"public Snowflake getEventId() {
+        return Snowflake.of(data.guildScheduledEventId());
+    }","/**
+     * Gets the ID of the event the user is subscribed to.
+     *
+     * @return The ID of the event the user is subscribed to.
+     */",discord4j.core.object
+"@Nonnull
+    OptionType getOptionType();","/**
+     * The {@link OptionType} of the choices you can suggest.
+     *
+     * @return The option type
+     */",net.dv8tion.jda.api.requests.restaction.interactions
+"@SuppressWarnings(""unchecked"")
+	public static void register(@SuppressWarnings(""rawtypes"") Map tagletMap) {
+		WRMqConsumerTaglet tag = new WRMqConsumerTaglet();
+		Taglet t = (Taglet) tagletMap.get(tag.getName());
+		if (t != null) {
+			tagletMap.remove(tag.getName());
+		}
+		tagletMap.put(tag.getName(), tag);
+	}","/**
+	 * Register this Taglet.
+	 * 
+	 * @param tagletMap
+	 *            the map to register this tag to.
+	 */",net.winroad.wrdoclet.taglets
+"@Nonnull
+    @CheckReturnValue
+    default PermissionOverrideAction setAllowed(@Nullable Collection<Permission> permissions)
+    {
+        if (permissions == null || permissions.isEmpty())
+            return setAllowed(0);
+        Checks.noneNull(permissions, ""Permissions"");
+        return setAllowed(Permission.getRaw(permissions));
+    }","/**
+     * Sets the value of explicitly granted permissions
+     * using a Collection of {@link net.dv8tion.jda.api.Permission Permissions}.
+     * <br><b>Note: Permissions not marked as {@link net.dv8tion.jda.api.Permission#isChannel() isChannel()} will have no affect!</b>
+     *
+     * <p>Example: {@code setAllow(EnumSet.of(Permission.VIEW_CHANNEL))}</p>
+     *
+     * @param  permissions
+     *         The Collection of Permissions representing the granted
+     *         permissions for the new PermissionOverride.
+     *         <br>If the provided value is {@code null} the permissions are reset to the default of none
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         If the any of the specified Permissions is {@code null}
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         If the currently logged in account does not have {@link Permission#MANAGE_PERMISSIONS Permission.MANAGE_PERMISSIONS}
+     *         on the channel and tries to set permissions it does not have in the channel
+     *
+     * @return The current PermissionOverrideAction - for chaining convenience
+     *
+     * @see    java.util.EnumSet EnumSet
+     * @see    #setAllowed(net.dv8tion.jda.api.Permission...) setAllow(Permission...)
+     */",net.dv8tion.jda.api.requests.restaction
+"public User getCurrent() {
+        return current;
+    }","/**
+     * Gets the current, new version of the {@link User} that has been updated in this event.
+     *
+     * @return The current version of the {@link User} updated in this event.
+     */",discord4j.core.event.domain
+"public static final Route CHANNEL_MODIFY = Route.put(""/channels/{channel.id}"");","/**
+     * Update a channels settings. Requires the 'MANAGE_CHANNELS' permission for the guild. Returns a guild channel on
+     * success, and a 400 BAD REQUEST on invalid parameters. Fires a Channel Update Gateway event.
+     *
+     * @see <a href=""https://discord.com/developers/docs/resources/channel#modify-channel"">
+     * https://discord.com/developers/docs/resources/channel#modify-channel</a>
+     */",discord4j.rest.route
+"public Publisher<?> onInviteDelete(InviteDeleteEvent event) {
+        return Mono.empty();
+    }","/**
+     * Invoked when an invite to a channel has expired.
+     *
+     * @param event the event instance
+     * @return a {@link Publisher} that completes when this listener has done processing the event, for example,
+     * returning any {@link Mono}, {@link Flux} or synchronous code using {@link Mono#fromRunnable(Runnable)}.
+     */",discord4j.core.event
+"@Nullable
+    Color getColor();","/**
+     * The color this {@link net.dv8tion.jda.api.entities.Role Role} is displayed in.
+     *
+     * @return Color value of Role-color
+     *
+     * @see    #getColorRaw()
+     */",net.dv8tion.jda.api.entities
+"public long getMessageAuthorIdLong()
+    {
+        return messageAuthorId;
+    }","/**
+     * The user id of the original message author.
+     * <br>This might be 0 for webhook messages.
+     *
+     * @return The user id of the original message author.
+     */",net.dv8tion.jda.api.events.message.react
+void attacheTracker(TrackingObserver recognizer);,"/**
+     * Attache the {@link TrackerImpl} for feedback notification.
+     *
+     * @param recognizer
+     *            the {@link TrackerImpl}
+     */",jestures.core.codification
+"@Nonnull
+    @CheckReturnValue
+    PermissionOverrideAction grant(long allowBits);","/**
+     * Grants the specified permissions.
+     * <br>This does not override already granted permissions.
+     *
+     * @param  allowBits
+     *         The permissions to grant, in addition to already allowed permissions
+     *
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         If the currently logged in account does not have {@link Permission#MANAGE_PERMISSIONS Permission.MANAGE_PERMISSIONS}
+     *         on the channel and tries to set permissions it does not have in the channel
+     *
+     * @return The current PermissionOverrideAction - for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction
+"@Nonnull
+    @CheckReturnValue
+    default AutoCompleteCallbackAction addChoiceLongs(@Nonnull long... choices)
+    {
+        return addChoices(Arrays.stream(choices)
+                .mapToObj(it -> new Command.Choice(String.valueOf(it), it))
+                .collect(Collectors.toList()));
+    }","/**
+     * Add up to {@value OptionData#MAX_CHOICES} choices which can be picked from by the user.
+     * <br>The user may continue writing inputs instead of using one of your choices.
+     *
+     * <p>The string values of the provided longs will be used as value and name for the {@link net.dv8tion.jda.api.interactions.commands.Command.Choice Choices}.
+     *
+     * @param  choices
+     *         The choice suggestions to present to the user
+     *
+     * @throws IllegalArgumentException
+     *         <ul>
+     *             <li>If {@code null} is provided</li>
+     *             <li>If more than {@value OptionData#MAX_CHOICES} choices are added</li>
+     *             <li>If the option type is incompatible with the choice type</li>
+     *             <li>If the numeric value of any of the choices is not between {@value OptionData#MIN_NEGATIVE_NUMBER} and {@value OptionData#MAX_POSITIVE_NUMBER}</li>
+     *         </ul>
+     *
+     * @return The same callback action, for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction.interactions
+"public Flux<GuildScheduledEventUserData> getSubscribedUsersAfter(Snowflake userId, @Nullable Boolean withMember) {
+        Function<Map<String, Object>, Flux<GuildScheduledEventUserData>> doRequest = params -> {
+            Optional.ofNullable(withMember).ifPresent(value -> params.put(""with_member"", value));
+            return restClient.getGuildService().getScheduledEventUsers(guildId, id, params);
+        };
+        return PaginationUtil.paginateAfter(doRequest, data -> Snowflake.asLong(data.user().id()), userId.asLong(), 100);
+    }","/**
+     * Request to retrieve <i>all</i> subscribed users <i>after</i> the specified ID.
+     * <p>
+     * The returned {@code Flux} will emit items in chronological order (older to newest). It is recommended to limit
+     * the emitted items by invoking either {@link Flux#takeWhile(Predicate)} (to retrieve IDs within a specified range)
+     * or {@link Flux#take(long)} (to retrieve a specific amount of IDs).
+     * <p>
+     * The following example will get <i>all</i> users from {@code userId} to {@code myOtherUserId}:
+     * {@code getSubscribedUsersAfter(userId).takeWhile(user -> user.getId().compareTo(myOtherUserId) <= 0)}
+     *
+     * @param userId The ID of the <i>oldest</i> user to retrieve.
+     * @param withMember Whether to optionally include the member object in the returned data (if the user is a member).
+     * @return A {@link Flux} that continually emits <i>all</i> {@link GuildScheduledEventUserData users} <i>after</i>
+     * the specified ID. If an error is received, it is emitted through the {@code Flux}.
+     * @see
+     * <a href=""https://discord.com/developers/docs/resources/guild-scheduled-event#get-guild-scheduled-event-users"">
+     * Get Guild Scheduled Event Users</a>
+     */",discord4j.rest.entity
+"public LegacyRoleEditSpec setHoist(boolean hoist) {
+        requestBuilder.hoist(hoist);
+        return this;
+    }","/**
+     * Sets whether the modified {@link Role} should be displayed separately in the sidebar.
+     *
+     * @param hoist The role hoisted property.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"public boolean isFromThread()
+    {
+        return getChannelType().isThread();
+    }","/**
+     * If the message event was from a {@link ThreadChannel ThreadChannel}
+     *
+     * @return If the message event was from a ThreadChannel
+     *
+     * @see ChannelType#isThread()
+     */",net.dv8tion.jda.api.events.message
+"@Nonnull
+    public static DataArray getArray(@Nonnull DataArray root, @Nonnull String path)
+    {
+        DataArray array = optArray(root, path);
+        if (array == null)
+            pathError(path, ""Array"");
+        return array;
+    }","/**
+     * Parses the given {@code path} and finds the appropriate value within this {@link DataArray}.
+     *
+     * @param  root
+     *         The root data array, which is the top level accessor.
+     *         <br>The very first element in the path corresponds to a field of that name within this root object.
+     * @param  path
+     *         The path of the value, in accordance with the described grammar by {@link DataPath}.
+     *         This must start with an index element, such as {@code ""[0]""}.
+     *
+     * @throws ParsingException
+     *         If the path is invalid or resolving fails due to missing elements
+     * @throws IndexOutOfBoundsException
+     *         If any of the elements in the path refer to an array index that is out of bounds
+     * @throws IllegalArgumentException
+     *         If null is provided or the path is empty
+     *
+     * @return The {@link DataArray} at the given path
+     */",net.dv8tion.jda.api.utils.data
+"public static CountTotalAction countEmojis() {
+        return new CountTotalAction(CountableEntity.EMOJIS);
+    }","/**
+     * Creates an action to count the number of emojis present in a store.
+     *
+     * @return a new {@link CountTotalAction}
+     */",discord4j.common.store.action.read
+void setGestureLength(GestureLength length);,"/**
+     * Set the gesture length.
+     *
+     * @param length
+     *            the length
+     */",jestures.core.recognition.gesturedata
+Flux<UserGetDTO> list();,"/**
+     * This method is used to get list the UserGetDTO.
+     *
+     * @return Flux<CityGetDTO>
+     * @since 1.0
+     */",org.khasanof.citiesapi.service.user
+"@Nonnull
+    @Override
+    M reset(long... fields);","/**
+     * Resets the fields specified by the provided bit-flag patterns.
+     * <br>Example: {@code manager.reset(ChannelManager.NAME, ChannelManager.PARENT);}
+     *
+     * <p><b>Flag Constants:</b>
+     * <ul>
+     *     <li>{@link #NAME}</li>
+     *     <li>{@link #PARENT}</li>
+     *     <li>{@link #TOPIC}</li>
+     *     <li>{@link #POSITION}</li>
+     *     <li>{@link #NSFW}</li>
+     *     <li>{@link #USERLIMIT}</li>
+     *     <li>{@link #BITRATE}</li>
+     *     <li>{@link #PERMISSION}</li>
+     *     <li>{@link #TYPE}</li>
+     *     <li>{@link #REGION}</li>
+     *     <li>{@link #AUTO_ARCHIVE_DURATION}</li>
+     *     <li>{@link #ARCHIVED}</li>
+     *     <li>{@link #LOCKED}</li>
+     *     <li>{@link #INVITEABLE}</li>
+     *     <li>{@link #AVAILABLE_TAGS}</li>
+     *     <li>{@link #APPLIED_TAGS}</li>
+     *     <li>{@link #PINNED}</li>
+     *     <li>{@link #REQUIRE_TAG}</li>
+     *     <li>{@link #DEFAULT_REACTION}</li>
+     *     <li>{@link #DEFAULT_LAYOUT}</li>
+     *     <li>{@link #DEFAULT_SORT_ORDER}</li>
+     *     <li>{@link #HIDE_MEDIA_DOWNLOAD_OPTIONS}</li>
+     *     <li>{@link #DEFAULT_THREAD_SLOWMODE}</li>
+     * </ul>
+     *
+     * @param  fields
+     *         Integer values containing the flags to reset.
+     *
+     * @return ChannelManager for chaining convenience
+     */",net.dv8tion.jda.api.managers.channel
+"public static VoiceReactorResources create() {
+        return new VoiceReactorResources(new ReactorResources());
+    }","/**
+     * Create a default set of Voice Gateway resources.
+     *
+     * @return a new {@link VoiceReactorResources} using all default properties
+     */",discord4j.voice
+"@Nullable
+    public String getOldBannerId()
+    {
+        return getOldValue();
+    }","/**
+     * The old banner id
+     *
+     * @return The old banner id, or null if the banner didn't exist
+     */",net.dv8tion.jda.api.events.guild.update
+"@Nonnull
+    @CheckReturnValue
+    ScheduledEventAction setImage(@Nullable Icon icon);","/**
+     * Sets the cover image for the new {@link ScheduledEvent ScheduledEvent}.
+     *
+     * @param  icon
+     *         The cover image for the new {@link ScheduledEvent ScheduledEvent},
+     *         or {@code null} for no cover image
+     *
+     * @return The current ScheduledEventAction, for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction
+"@Nonnull
+    public String getThreadMemberId()
+    {
+        return Long.toUnsignedString(getThreadMemberIdLong());
+    }","/**
+     * The id of the {@link ThreadMember} that fired this and derived event.
+     *
+     * @return Never-null String containing the ID.
+     */",net.dv8tion.jda.api.events.thread.member
+"public LegacyMessageReferenceSpec setFailIfNotExists(boolean failIfNotExists) {
+        requestBuilder.failIfNotExists(failIfNotExists);
+        return this;
+    }","/**
+     * Sets to error if the referenced message doesn't exist instead of sending as a normal (non-reply) message,
+     * default true.
+     *
+     * @param failIfNotExists Whether to error if the referenced message doesn't exist instead of sending as a normal
+     *                        (non-reply) message.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"public int getMaxLength()
+        {
+            return maxLength;
+        }","/**
+         * The maximum length. This is -1 if none has been set.
+         *
+         * @return Maximum length or -1
+         */",net.dv8tion.jda.api.interactions.components.text
+"public int getChunkIndex() {
+        return chunkIndex;
+    }","/**
+     * Gets the chunk index in the expected chunks for this response (0 &lt;= chunk_index &lt; chunk_count).
+     *
+     * @return The chunk index in the expected chunks for this response (0 &lt;= chunk_index &lt; chunk_count).
+     */",discord4j.core.event.domain.guild
+"@Nonnull
+    public EmbedBuilder setTitle(@Nullable String title, @Nullable String url)
+    {
+        if (title == null)
+        {
+            this.title = null;
+            this.url = null;
+        }
+        else
+        {
+            Checks.notEmpty(title, ""Title"");
+            Checks.check(title.length() <= MessageEmbed.TITLE_MAX_LENGTH, ""Title cannot be longer than %d characters."", MessageEmbed.TITLE_MAX_LENGTH);
+            if (Helpers.isBlank(url))
+                url = null;
+            urlCheck(url);
+
+            this.title = title;
+            this.url = url;
+        }
+        return this;
+    }","/**
+     * Sets the Title of the embed.
+     * <br>You can provide {@code null} as url if no url should be used.
+     * <br>If you want to set a URL without a title, use {@link #setUrl(String)} instead.
+     *
+     * <p><b><a href=""https://raw.githubusercontent.com/discord-jda/JDA/assets/assets/docs/embeds/04-setTitle.png"">Example</a></b>
+     *
+     * @param  title
+     *         the title of the embed
+     * @param  url
+     *         Makes the title into a hyperlink pointed at this url.
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         <ul>
+     *             <li>If the provided {@code title} is an empty String.</li>
+     *             <li>If the character limit for {@code title}, defined by {@link net.dv8tion.jda.api.entities.MessageEmbed#TITLE_MAX_LENGTH} as {@value net.dv8tion.jda.api.entities.MessageEmbed#TITLE_MAX_LENGTH},
+     *             is exceeded.</li>
+     *             <li>If the character limit for {@code url}, defined by {@link net.dv8tion.jda.api.entities.MessageEmbed#URL_MAX_LENGTH} as {@value net.dv8tion.jda.api.entities.MessageEmbed#URL_MAX_LENGTH},
+     *             is exceeded.</li>
+     *             <li>If the provided {@code url} is not a properly formatted http or https url.</li>
+     *         </ul>
+     *
+     * @return the builder after the title has been set
+     */",net.dv8tion.jda.api
+"@Nonnull
+    @CheckReturnValue
+    WebhookMessageCreateAction<T> createThread(@Nonnull ThreadCreateMetadata threadMetadata);","/**
+     * Create a new thread channel for this webhook message.
+     * <br>This is currently limited to forum channels.
+     * <br>Does nothing if a {@link #setThread(ThreadChannel) target thread} is already configured.
+     *
+     * <p>This cannot be used with {@link net.dv8tion.jda.api.interactions.InteractionHook InteractionHooks}!
+     *
+     * @param  threadMetadata
+     *         The metadata for the thread
+     *
+     * @throws IllegalStateException
+     *         If this is an interaction webhook
+     * @throws IllegalArgumentException
+     *         If null is provided
+     *
+     * @return The same message action, for chaining convenience
+     *
+     * @see    #createThread(String, ForumTagSnowflake...)
+     */",net.dv8tion.jda.api.requests.restaction
+"public Mono<Void> moveMemberToStageAudience(Member member) {
+        return Mono.defer(() -> gateway.getRestClient().getGuildService()
+                .modifyOthersVoiceState(member.getGuildId().asLong(), member.getId().asLong(),
+                        UpdateUserVoiceStateRequest.builder().suppress(true).build()));
+    }","/**
+     * Requests to move the specified {@param member} to the audience of the stage channel associated with this
+     * stage instance.
+     *
+     * @param member The member to move to the stage audience
+     * @return A {@link Mono} where, upon successful completion, emits nothing; indicating that the specified
+     * {@param member} has been moved to the audience of the stage channel associated with this stage instance.
+     * If an error is received, it is emitted through the {@code Mono}.
+     */",discord4j.core.object.entity
+B create(byte [] data);,"/**
+     * Create {@link threegpp.milenage.MilenageBuffer} object from the array of bytes.
+     *
+     * @param data  Array of bytes with length equal to {@link Milenage#BLOCK_LEN_BYTES}.
+     * @return  {@link threegpp.milenage.MilenageBuffer} object.
+     */",threegpp.milenage
+Mono<GuildData> getGuildById(long guildId);,"/**
+     * Retrieves data for the guild corresponding to the given guild ID.
+     *
+     * @param guildId the guild ID
+     * @return A {@link Mono} emitting the guild, or empty if not found
+     */",discord4j.common.store.api.layout
+"@Nonnull
+    default EnumSet<ChannelType> getChannelTypes()
+    {
+        return ChannelType.fromSortBucket(getSortBucket());
+    }","/**
+     * The {@link ChannelType ChannelTypes} for the {@link #getSortBucket() sorting bucket}.
+     *
+     * @return The channel types
+     *
+     * @see    ChannelType#fromSortBucket(int)
+     */",net.dv8tion.jda.api.requests.restaction.order
+"@Nonnull
+    EntitlementPaginationAction guild(long guildId);","/**
+     * Filters {@link Entitlement Entitlement}s by a guild id
+     *
+     * @param guildId
+     *        The guild id to filter by
+     *
+     * @return The current {@link EntitlementPaginationAction EntitlementPaginationAction} for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction.pagination
+"@Nonnull
+    @CheckReturnValue
+    RestAction<List<Invite>> retrieveInvites();","/**
+     * Returns all invites for this channel.
+     * <br>Requires {@link net.dv8tion.jda.api.Permission#MANAGE_CHANNEL MANAGE_CHANNEL} in this channel.
+     * Will throw an {@link net.dv8tion.jda.api.exceptions.InsufficientPermissionException InsufficientPermissionException} otherwise.
+     *
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         if the account does not have {@link net.dv8tion.jda.api.Permission#MANAGE_CHANNEL MANAGE_CHANNEL} in this channel
+     *
+     * @return {@link net.dv8tion.jda.api.requests.RestAction RestAction} - Type: List{@literal <}{@link net.dv8tion.jda.api.entities.Invite Invite}{@literal >}
+     *         <br>The list of expanded Invite objects
+     *
+     * @see    net.dv8tion.jda.api.entities.Guild#retrieveInvites()
+     */",net.dv8tion.jda.api.entities.channel.attribute
+"@Nonnull
+    static Button primary(@Nonnull String id, @Nonnull String label)
+    {
+        Checks.notEmpty(id, ""Id"");
+        Checks.notEmpty(label, ""Label"");
+        Checks.notLonger(id, ID_MAX_LENGTH, ""Id"");
+        Checks.notLonger(label, LABEL_MAX_LENGTH, ""Label"");
+        return new ButtonImpl(id, label, ButtonStyle.PRIMARY, false, null);
+    }","/**
+     * Creates a button with {@link ButtonStyle#PRIMARY PRIMARY} Style.
+     * <br>The button is enabled and has no emoji attached by default.
+     * You can use {@link #asDisabled()} and {@link #withEmoji(Emoji)} to further configure it.
+     *
+     * @param  id
+     *         The custom button ID
+     * @param  label
+     *         The text to display on the button
+     *
+     * @throws IllegalArgumentException
+     *         <ul>
+     *             <li>If any provided argument is null or empty.</li>
+     *             <li>If the character limit for {@code id}, defined by {@link #ID_MAX_LENGTH} as {@value #ID_MAX_LENGTH},
+     *             is exceeded.</li>
+     *             <li>If the character limit for {@code label}, defined by {@link #LABEL_MAX_LENGTH} as {@value #LABEL_MAX_LENGTH},
+     *             is exceeded.</li>
+     *         </ul>
+     *
+     * @return The button instance
+     */",net.dv8tion.jda.api.interactions.components.buttons
+"@Nonnull
+        public Method getMethod()
+        {
+            return baseRoute.method;
+        }","/**
+         * The HTTP method.
+         *
+         * @return The HTTP method
+         */",net.dv8tion.jda.api.requests
+"Mono<T> read(Mono<ByteBuf> content, Class<T> responseType);","/**
+     * Read from the input message and encode to a single object.
+     *
+     * @param content the response contents
+     * @param responseType the type of object in the response which must have been previously checked via {@link
+     * #canRead(Class, String)}
+     * @return a Mono for the resolved response, according to the given response type
+     */",discord4j.rest.http
+"@Nonnull
+        public Builder setLabel(@Nonnull String label)
+        {
+            Checks.notBlank(label, ""Label"");
+            Checks.notLonger(label, MAX_LABEL_LENGTH, ""Label"");
+            this.label = label;
+            return this;
+        }","/**
+         * Sets the label for this TextInput
+         *
+         * @param  label
+         *         The label to set
+         *
+         * @throws IllegalArgumentException
+         *         <ul>
+         *             <li>If label is null or blank</li>
+         *             <li>If label is longer than {@value #MAX_LABEL_LENGTH} characters</li>
+         *         </ul>
+         *
+         * @return The same Builder for chaining convenience.
+         */",net.dv8tion.jda.api.interactions.components.text
+"public static final Route GUILD_MEMBER_MODIFY = Route.patch(""/guilds/{guild.id}/members/{user.id}"");","/**
+     * Modify attributes of a guild member. Returns a 200 OK with the guild member on success. Fires a Guild Member
+     * Update Gateway event.
+     *
+     * @see <a href=""https://discord.com/developers/docs/resources/guild#modify-guild-member"">
+     * https://discord.com/developers/docs/resources/guild#modify-guild-member</a>
+     */",discord4j.rest.route
+"@Nonnull
+    public List<ForumTag> getOldTags()
+    {
+        SortedSnowflakeCacheView<ForumTag> cache = getChannel().asThreadChannel().getParentChannel().asForumChannel().getAvailableTagCache();
+        return getOldValue().stream()
+                .map(cache::getElementById)
+                .filter(Objects::nonNull)
+                .sorted()
+                .collect(Helpers.toUnmodifiableList());
+    }","/**
+     * The old list of applied tags.
+     *
+     * <p>This requires {@link net.dv8tion.jda.api.utils.cache.CacheFlag#FORUM_TAGS CacheFlag.FORUM_TAGS} to be enabled.
+     *
+     * @return The previous list of applied tags
+     */",net.dv8tion.jda.api.events.channel.update
+public abstract boolean isValid();,"/**
+     * Whether this builder has a valid state to build.
+     * <br>If this is {@code false}, then {@link #build()} throws an {@link IllegalStateException}.
+     * You can check the exception docs on {@link #build()} for specifics.
+     *
+     * @return True, if the builder is in a valid state
+     */",net.dv8tion.jda.api.utils.messages
+"@Nonnull
+    default MessageChannel getMessageChannel()
+    {
+        return ChannelUtil.safeChannelCast(getChannel(), MessageChannel.class);
+    }","/**
+     * The {@link net.dv8tion.jda.api.entities.channel.middleman.MessageChannel} this interaction happened in.
+     * <br>If {@link #getChannelType()} is not a message channel type, this throws {@link IllegalStateException}!
+     *
+     * @throws IllegalStateException
+     *         If {@link #getChannel()} is not a message channel
+     *
+     * @return The {@link net.dv8tion.jda.api.entities.channel.middleman.MessageChannel}
+     */",net.dv8tion.jda.api.interactions
+"public final Mono<ChannelData> getPrivateChannel() {
+        return restClient.getUserService().createDM(DMCreateRequest.builder().recipientId(Snowflake.asString(id)).build());
+    }","/**
+     * Requests to retrieve the private channel (DM) to this user.
+     *
+     * @return A {@link Mono} where, upon successful completion, emits the {@link ChannelData private channel} to
+     * this user. If an error is received, it is emitted through the {@code Mono}.
+     */",discord4j.rest.entity
+"@Nonnull
+    public Result<T> onFailure(@Nonnull Consumer<? super Throwable> callback)
+    {
+        Checks.notNull(callback, ""Callback"");
+        if (isFailure())
+            callback.accept(error);
+        return this;
+    }","/**
+     * Passive error handler.
+     * <br>This will apply the provided callback if {@link #isFailure()} is true
+     * and return the same result for further chaining.
+     *
+     * @param  callback
+     *         The passive callback
+     *
+     * @throws IllegalArgumentException
+     *         If the callback is null
+     *
+     * @return The same result instance
+     */",net.dv8tion.jda.api.utils
+"@Nullable
+    String getTopic();","/**
+     * The topic set for this channel.
+     * <br>If no topic has been set, this returns null.
+     *
+     * @return Possibly-null String containing the topic of this channel.
+     */",net.dv8tion.jda.api.entities.channel.middleman
+"public long getMaxRetries() {
+        return maxRetries;
+    }","/**
+     * Returns the number of retries.
+     *
+     * @return number of retries
+     */",discord4j.common.retry
+"Mono<PresenceData> getPresenceById(long guildId, long userId);","/**
+     * Retrieves data for the presence corresponding to the given guild ID and user ID.
+     *
+     * @param guildId the guild ID
+     * @param userId  the user ID
+     * @return A {@link Mono} emitting the presence, or empty if not found
+     */",discord4j.common.store.api.layout
+"public static DiscordClient create(String token) {
+        return DiscordClientBuilder.create(token).build();
+    }","/**
+     * Create a {@link DiscordClient} with default options, using the given token for authentication.
+     *
+     * @param token the bot token used for authentication
+     * @return a {@link DiscordClient} configured with the default options
+     */",discord4j.core
+"public GatewayReactorResources(ReactorResources parent, Scheduler payloadSenderScheduler) {
+        super(parent.getHttpClient(), parent.getTimerTaskScheduler(), parent.getBlockingTaskScheduler());
+        this.payloadSenderScheduler = payloadSenderScheduler;
+    }","/**
+     * Create Gateway resources based off {@link ReactorResources} properties, and allowing customization of the
+     * remaining properties.
+     *
+     * @param parent the resources instance to get properties from
+     * @param payloadSenderScheduler a {@link Scheduler} for sending payloads. A default can be created from
+     * {@link GatewayReactorResources#DEFAULT_PAYLOAD_SENDER_SCHEDULER}
+     */",discord4j.gateway
+"@Nonnull
+    EnumSet<Permission> getPermissions(@Nonnull GuildChannel channel);","/**
+     * The Permissions this PermissionHolder holds in the specified {@link GuildChannel GuildChannel}.
+     * <br>Permissions returned by this may be different from {@link #getPermissions()}
+     * due to the GuildChannel's {@link net.dv8tion.jda.api.entities.PermissionOverride PermissionOverrides}.
+     * <br><u>Changes to the returned set do not affect this entity directly.</u>
+     *
+     * @param  channel
+     *         The {@link GuildChannel GuildChannel} of which to get Permissions for
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         If the channel is null
+     *
+     * @return Set of Permissions granted to this Permission Holder in the specified channel.
+     */",net.dv8tion.jda.api.entities
+A factory class for the creation of gui components ({@link JFXListView},"/*******************************************************************************
+ * Copyright (c) 2018 Giulianini Luca
+ *
+ * Licensed under the Apache License, Version 2.0 (the ""License"");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an ""AS IS"" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *******************************************************************************/",jestures.core.view.utils
+boolean hasFaction();,"/**
+     * Check if a player has a faction
+     *
+     * @return boolean
+     */",com.massivecraft.factions
+"public Optional<ForumChannel> getOld() {
+        return Optional.ofNullable(old);
+    }","/**
+     * Gets the old version of the {@link ForumChannel} that was updated in this event, if present.
+     *
+     * @return The old version of the updated {@link ForumChannel}, if present.
+     */",discord4j.core.event.domain.channel
+"public Optional<User> getOld() {
+        return Optional.ofNullable(old);
+    }","/**
+     * Gets the old version of the {@link User} that has been updated in this event, if present.
+     * This may not be available if {@code Users} are not stored.
+     *
+     * @return The old version of the {@link User} that has been updated in this event, if present.
+     */",discord4j.core.event.domain
+"public RestEmoji restGuildEmoji(Snowflake guildId, EmojiData data) {
+        return RestEmoji.create(this, guildId,
+            Snowflake.of(data.id().orElseThrow(() -> new IllegalArgumentException(""Not a guild emoji""))));
+    }","/**
+     * Requests to retrieve the guild emoji represented by the supplied ID and {@link EmojiData}.
+     *
+     * @param guildId The ID of the guild.
+     * @param data The data of the emoji.
+     * @return A {@link RestEmoji} as represented by the supplied parameters.
+     */",discord4j.rest
+"@Nullable
+    public String getOldIconUrl()
+    {
+        return previous == null ? null : String.format(Guild.ICON_URL, guild.getId(), previous, previous.startsWith(""a_"") ? ""gif"" : ""png"");
+    }","/**
+     * The url of the old icon
+     *
+     * @return The url of the old icon, or null
+     */",net.dv8tion.jda.api.events.guild.update
+"public LegacyEmbedCreateSpec setImage(String url) {
+        requestBuilder.image(EmbedImageData.builder()
+                .url(url)
+                .build());
+        return this;
+    }","/**
+     * Sets the image of the embed.
+     *
+     * @param url An image URL.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"@Nonnull
+    @CheckReturnValue
+    default ChannelOrderAction setCategory(@Nullable Category category)
+    {
+        return setCategory(category, false);
+    }","/**
+     * Set the parent category for the currently selected channel.
+     *
+     * <p>By default, this will not sync the permissions with the new category.
+     * You can use {@link #setCategory(Category, boolean)} to sync permissions.
+     *
+     * @param  category
+     *         The new parent category, or null to not have any category
+     *
+     * @throws IllegalStateException
+     *         If no entity has been selected yet, use {@link #selectPosition(Object)}
+     * @throws IllegalArgumentException
+     *         If the provided category is not in the same guild as the channel
+     *
+     * @return The current ChannelOrderAction
+     */",net.dv8tion.jda.api.requests.restaction.order
+"@RequestMapping(value = ""register"", method = RequestMethod.POST)
+    public Mono<Void> register(@Valid @RequestBody UserCreateDTO dto) {
+        return service.register(dto);
+    }","/**
+     * This method sends the DTO to the service's register method.
+     *
+     * @param dto -> UserCreateDTO comes from the corresponding request body
+     * @return Mono<Void>
+     * @since 1.0
+     */",org.khasanof.citiesapi.controller.user
+"public LegacyInviteCreateSpec setTemporary(boolean temporary) {
+        requestBuilder.temporary(temporary);
+        return this;
+    }","/**
+     * Sets whether the created {@link Invite} only grants temporary membership. This property is {@code false} by
+     * default.
+     *
+     * @param temporary {@code true} if this invite is temporary, {@code false} otherwise.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"public int getCode()
+    {
+        return code;
+    }","/**
+     * The server close code that was in the disconnect close frame
+     * of this JDA instance.
+     *
+     * @return int close code of the Server Close-Frame
+     */",net.dv8tion.jda.api.events.session
+"public Scheduler getBlockingTaskScheduler() {
+        return blockingTaskScheduler;
+    }","/**
+     * Get the {@link Scheduler} configured by this provider to be used in blocking tasks.
+     *
+     * @return a blocking-capable {@link Scheduler}
+     */",discord4j.common
+"default Mono<Message> getMessageById(Snowflake id, EntityRetrievalStrategy retrievalStrategy) {
+        return getClient().withRetrievalStrategy(retrievalStrategy).getMessageById(getId(), id);
+    }","/**
+     * Requests to retrieve the message as represented by the supplied ID, using the given retrieval strategy.
+     *
+     * @param id                The ID of the message.
+     * @param retrievalStrategy the strategy to use to get the message
+     * @return A {@link Mono} where, upon successful completion, emits the {@link Message} as represented by the
+     * supplied ID. If an error is received, it is emitted through the {@code Mono}.
+     */",discord4j.core.object.entity.channel
+"@RequestMapping(value = ""list"", method = RequestMethod.GET)
+    public Flux<UserGetDTO> list() {
+        return service.list();
+    }","/**
+     * This method is used to return the result.
+     *
+     * @return Flux<UserGetDTO>
+     * @since 1.0
+     */",org.khasanof.citiesapi.controller.user
+"public LegacyEmbedCreateSpec setThumbnail(String url) {
+        requestBuilder.thumbnail(EmbedThumbnailData.builder()
+                .url(url)
+                .build());
+        return this;
+    }","/**
+     * Sets the thumbnail of the embed.
+     *
+     * @param url An image URL.
+     * @return This spec.
+     */",discord4j.core.spec.legacy
+"public Snowflake getChannelId() {
+        return this.channelId;
+    }","/**
+     * Get the {@link Snowflake} ID of the channel where the poll is.
+     *
+     * @return The ID of the channel where the poll is.
+     */",discord4j.core.event.domain.poll
+"@Nonnull
+    public String getOldImageUrl()
+    {
+        return getOldValue();
+    }","/**
+     * The old {@link ScheduledEvent#getImageUrl() image}.
+     *
+     * @return The old image
+     */",net.dv8tion.jda.api.events.guild.scheduledevent.update
+"public Optional<String> getName() {
+        return data.name().toOptional();
+    }","/**
+     * Gets the name of the invoked command.
+     *
+     * @return The name of the invoked command.
+     */",discord4j.core.object.command
+"public ApplicationCommandInteractionOptionValue(final GatewayDiscordClient gateway, @Nullable final Long guildId,
+                                                    final int type, final String value,
+                                                    @Nullable final ApplicationCommandInteractionResolvedData resolved) {
+        this.gateway = gateway;
+        this.guildId = guildId;
+        this.value = value;
+        this.type = type;
+        this.resolved = resolved;
+    }",/** The gateway associated to this object. */,discord4j.core.object.command
+MilenageBuffer<T> encrypt(Cipher cipher);,"/**
+     * Encrypts this buffer with given {@link javax.crypto.Cipher} object
+     *
+     * @param cipher {@link javax.crypto.Cipher} object
+     * @return New result {@link threegpp.milenage.MilenageBuffer} object
+     */",threegpp.milenage
+boolean canProvide();,"/**
+     * If this method returns true JDA will attempt to retrieve audio data from this handler by calling
+     * {@link #provide20MsAudio()}. The return value is checked each time JDA attempts send audio, so if
+     * the developer wanted to start and stop sending audio it could be done by changing the value returned
+     * by this method at runtime.
+     *
+     * @return If true, JDA will attempt to retrieve audio data from {@link #provide20MsAudio()}
+     */",net.dv8tion.jda.api.audio
+"boolean hasPermission(@Nonnull GuildChannel channel, @Nonnull Permission... permissions);","/**
+     * Checks whether or not this PermissionHolder has the given {@link net.dv8tion.jda.api.Permission Permissions} in the specified GuildChannel.
+     *
+     * @param  channel
+     *         The {@link GuildChannel GuildChannel} in which to check.
+     * @param  permissions
+     *         Permissions to check for.
+     *
+     * @throws IllegalArgumentException
+     *         If null is provided
+     *
+     * @return True, if all of the specified Permissions are granted to this PermissionHolder in the provided GuildChannel.
+     *
+     * @see    java.util.EnumSet EnumSet
+     */",net.dv8tion.jda.api.entities
+"default void onUserSpeakingModeUpdate(@Nonnull UserSnowflake user, @Nonnull EnumSet<SpeakingMode> modes) {}","/**
+     * This method is used to listen for users changing their speaking mode.
+     * <p>Whenever a user joins a voice channel, this is fired once to define the initial speaking modes.
+     *
+     * <p>To detect when a user is speaking, a {@link net.dv8tion.jda.api.audio.AudioReceiveHandler AudioReceiveHandler} should be used instead.
+     *
+     * <p>This method works independently of the user cache. The provided user might not be cached.
+     *
+     * @param user
+     *        The user who changed their speaking mode
+     * @param modes
+     *        The new speaking modes of the user
+     */",net.dv8tion.jda.api.audio.hooks
+"Mono<Void> onGuildCreate(int shardIndex, GuildCreate dispatch);","/**
+     * Updates the internal state of the store according to the given {@link GuildCreate} gateway dispatch. This
+     * will typically perform an insert operation on the related {@link GuildData}, as well as all associated
+     * entities received in the payload, such as channels, roles, emojis, members, voice states and presences.
+     *
+     * @param shardIndex the index of the shard where the dispatch comes from
+     * @param dispatch   the dispatch data coming from Discord gateway
+     * @return a {@link Mono} completing when the operation is done
+     */",discord4j.common.store.api.layout
+boolean isReconnect();,"/**
+         * Whether this node is reconnecting. Can be used to setup a priority based system.
+         *
+         * @return True, if this session is reconnecting
+         */",net.dv8tion.jda.api.utils
+"@Nonnull
+    @CheckReturnValue
+    default PermissionOverrideAction clear(@Nonnull Permission... permissions)
+    {
+        return clear(Permission.getRaw(permissions));
+    }","/**
+     * Clears the provided {@link net.dv8tion.jda.api.Permission Permissions} bits
+     * from the {@link net.dv8tion.jda.api.entities.PermissionOverride PermissionOverride}.
+     * <br>This will cause the provided Permissions to be inherited
+     *
+     * @param  permissions
+     *         The permissions to clear from the {@link net.dv8tion.jda.api.entities.PermissionOverride PermissionOverride}
+     *
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         If the currently logged in account does not have {@link Permission#MANAGE_PERMISSIONS Permission.MANAGE_PERMISSIONS}
+     *         on the channel and tries to set permissions it does not have in the channel
+     * @throws IllegalArgumentException
+     *         If any provided argument is null
+     *
+     * @return The current PermissionOverrideAction - for chaining convenience
+     */",net.dv8tion.jda.api.requests.restaction
+"public static final Route AUDIT_LOG_GET = Route.get(""/guilds/{guild.id}/audit-logs"");","/**
+     * Returns an audit log object for the guild. Requires the 'VIEW_AUDIT_LOG' permission.
+     *
+     * @see <a href=""https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log"">
+     * https://discord.com/developers/docs/resources/audit-log#get-guild-audit-log</a>
+     */",discord4j.rest.route
+"public static int getInt(@Nonnull DataArray root, @Nonnull String path)
+    {
+        Integer integer = get(root, path, DataObject::getInt, DataArray::getInt);
+        if (integer == null)
+            pathError(path, ""int"");
+        return integer;
+    }","/**
+     * Parses the given {@code path} and finds the appropriate value within this {@link DataArray}.
+     * <br>If the resulting value is a string, this will parse the string using {@link Integer#parseInt(String)}.
+     *
+     * @param  root
+     *         The root data array, which is the top level accessor.
+     *         <br>The very first element in the path corresponds to a field of that name within this root object.
+     * @param  path
+     *         The path of the value, in accordance with the described grammar by {@link DataPath}.
+     *         This must start with an index element, such as {@code ""[0]""}.
+     *
+     * @throws ParsingException
+     *         If the path is invalid or resolving fails due to missing elements
+     * @throws IndexOutOfBoundsException
+     *         If any of the elements in the path refer to an array index that is out of bounds
+     * @throws IllegalArgumentException
+     *         If null is provided or the path is empty
+     *
+     * @return The int value at the given path
+     */",net.dv8tion.jda.api.utils.data
+int getUserLimit();,"/**
+     * The maximum amount of {@link net.dv8tion.jda.api.entities.Member Members} that be in an audio connection within this channel concurrently.
+     * <br>Returns 0 if there is no limit.
+     *
+     * <p>Moderators with the {@link net.dv8tion.jda.api.Permission#VOICE_MOVE_OTHERS VOICE_MOVE_OTHERS} permission can bypass this limit.
+     *
+     * @return The maximum connections allowed in this channel concurrently
+     */",net.dv8tion.jda.api.entities.channel.middleman
+"Route.CompiledRoute route = Route.Messages.GET_MESSAGE_HISTORY.compile(channel.getId()).withQueryParams(""before"", messageId);","/**
+     * Constructs a {@link net.dv8tion.jda.api.entities.MessageHistory MessageHistory} with the initially retrieved history
+     * of messages sent before the mentioned message ID (exclusive).
+     * <br>The provided ID need not be valid!
+     *
+     * <p>Alternatively you can use {@link net.dv8tion.jda.api.entities.channel.middleman.MessageChannel#getHistoryBefore(String, int) MessageChannel.getHistoryBefore(...)}
+     *
+     * <p><b>Example</b>
+     * <br>{@code MessageHistory history = MessageHistory.getHistoryBefore(channel, messageId).limit(60).complete()}
+     * <br>Will return a MessageHistory instance with the first 60 messages sent before the provided message ID.
+     *
+     * <p>Alternatively you can provide an epoch millisecond timestamp using {@link TimeUtil#getDiscordTimestamp(long) MiscUtil.getDiscordTimestamp(long)}:
+     * <br><pre><code>
+     * long timestamp = System.currentTimeMillis(); // or any other epoch millis timestamp
+     * String discordTimestamp = Long.toUnsignedString(MiscUtil.getDiscordTimestamp(timestamp));
+     * MessageHistory history = MessageHistory.getHistoryBefore(channel, discordTimestamp).complete();
+     * </code></pre>
+     *
+     * @param  channel
+     *         The {@link net.dv8tion.jda.api.entities.channel.middleman.MessageChannel MessageChannel}
+     * @param  messageId
+     *         The pivot ID to use
+     *
+     * @throws java.lang.IllegalArgumentException
+     *         If any of the provided arguments is {@code null};
+     *         Or if the provided messageId contains whitespace
+     * @throws net.dv8tion.jda.api.exceptions.InsufficientPermissionException
+     *         If this is a TextChannel and the currently logged in account does not
+     *         have the permission {@link net.dv8tion.jda.api.Permission#MESSAGE_HISTORY Permission.MESSAGE_HISTORY}
+     *
+     * @return {@link net.dv8tion.jda.api.entities.MessageHistory.MessageRetrieveAction MessageRetrieveAction}
+     *
+     * @see    net.dv8tion.jda.api.entities.channel.middleman.MessageChannel#getHistoryBefore(String, int)  MessageChannel.getHistoryBefore(String, int)
+     * @see    net.dv8tion.jda.api.entities.channel.middleman.MessageChannel#getHistoryBefore(long, int)    MessageChannel.getHistoryBefore(long, int)
+     * @see    net.dv8tion.jda.api.entities.channel.middleman.MessageChannel#getHistoryBefore(Message, int) MessageChannel.getHistoryBefore(Message, int)
+     */",net.dv8tion.jda.api.entities
